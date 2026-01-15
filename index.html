@@ -2,14 +2,16 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Traduttore Criptato</title>
+    <title>Traduttore Criptato +2 con Voce</title>
 </head>
 <body>
 
-<h2>Traduttore Criptato</h2>
+<h2>Traduttore Criptato (+2)</h2>
 
-<textarea id="input" rows="6" cols="60"></textarea><br><br>
+<textarea id="input" rows="6" cols="60" placeholder="Scrivi il testo..."></textarea><br><br>
+
 <button onclick="traduci()">Traduci</button>
+<button onclick="leggi()">🔊 Leggi</button>
 
 <h3>Risultato:</h3>
 <textarea id="output" rows="6" cols="60" readonly></textarea>
@@ -42,6 +44,21 @@ function traduci() {
     }
 
     document.getElementById("output").value = output;
+}
+
+function leggi() {
+    let testo = document.getElementById("output").value;
+    if (!testo) return;
+
+    // ferma eventuale lettura precedente
+    speechSynthesis.cancel();
+
+    let utterance = new SpeechSynthesisUtterance(testo);
+    utterance.lang = "it-IT"; // lingua
+    utterance.rate = 1;       // velocità (0.5 - 2)
+    utterance.pitch = 1;      // tono (0 - 2)
+
+    speechSynthesis.speak(utterance);
 }
 </script>
 
