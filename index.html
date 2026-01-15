@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Traduttore Criptato</title>
+</head>
+<body>
+
+<h2>Traduttore Criptato</h2>
+
+<textarea id="input" rows="6" cols="60"></textarea><br><br>
+<button onclick="traduci()">Traduci</button>
+
+<h3>Risultato:</h3>
+<textarea id="output" rows="6" cols="60" readonly></textarea>
+
+<script>
+function cifra(c) {
+    if (c >= 'a' && c <= 'z')
+        return String.fromCharCode((c.charCodeAt(0) - 97 + 2) % 26 + 97);
+
+    if (c >= 'A' && c <= 'Z')
+        return String.fromCharCode((c.charCodeAt(0) - 65 + 2) % 26 + 65);
+
+    switch (c) {
+        case 'à': return 'ì';
+        case 'ì': return 'ò';
+        case 'ò': return 'à';
+        case 'è': return 'ù';
+        case 'ù': return 'è';
+    }
+
+    return c;
+}
+
+function traduci() {
+    let input = document.getElementById("input").value;
+    let output = "";
+
+    for (let c of input) {
+        output += cifra(c);
+    }
+
+    document.getElementById("output").value = output;
+}
+</script>
+
+</body>
+</html>
+
