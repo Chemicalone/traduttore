@@ -2,11 +2,11 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Traduttore Criptato +2 con Voce</title>
+    <title>Traduttore Criptato con Voce</title>
 </head>
 <body>
 
-<h2>Traduttore Criptato (+2)</h2>
+<h2>Traduttore Criptato</h2>
 
 <textarea id="input" rows="6" cols="60" placeholder="Scrivi il testo..."></textarea><br><br>
 
@@ -26,9 +26,9 @@ function cifra(c) {
 
     switch (c) {
         case 'à': return 'ì';
-        case 'ì': return 'ò';
+        case 'ì': return 'ù';
         case 'ò': return 'à';
-        case 'è': return 'ù';
+        case 'è': return 'ò';
         case 'ù': return 'è';
     }
 
